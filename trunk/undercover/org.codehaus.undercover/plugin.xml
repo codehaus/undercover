@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="org.codehaus.undercover"
+   name="Undercover Plug-in"
+   version="1.0.0"
+   provider-name="org.codehaus.undercover"
+   class="org.codehaus.undercover.UndercoverPlugin">
+
+   <runtime>
+      <library name="org.codehaus.undercover.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.codehaus.undercover.quilt"/>
+      <import plugin="org.eclipse.debug.core"/>
+   </requires>
+
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.internal.core.CompilationUnit"
+            id="undercover.contribution1">
+         <menu
+               label="Undercover"
+               path="additions"
+               id="org.codehaus.undercover.menu">
+            <separator
+                  name="context">
+            </separator>
+         </menu>
+         <action
+               label="Find Tests"
+               class="org.codehaus.undercover.popup.actions.FindTestsAction"
+               icon="icons/insp_sbook.gif"
+               menubarPath="org.codehaus.undercover.menu/context"
+               id="org.codehaus.undercover.popup.actions.FindTestsAction">
+         </action>
+         <action
+               label="Refresh"
+               class="org.codehaus.undercover.popup.actions.RefreshAction"
+               menubarPath="org.codehaus.undercover.menu/context"
+               icon="icons/refresh.gif"
+               id="org.codehaus.undercover.popup.actions.RefreshAction">
+         </action>
+         <action
+               label="Execute testcase"
+               class="org.codehaus.undercover.popup.actions.ExecuteAction"
+               icon="icons/run_exc.gif"
+               menubarPath="org.codehaus.undercover.menu/context"
+               id="org.codehaus.undercover.popup.actions.ExecuteAction">
+         </action>
+         
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Undercover Commands"
+            id="org.eclipse.contribution.hello.actionSet">
+         <action
+               label="Refresh"
+               class="org.codehaus.undercover.popup.actions.RefreshAction"
+               toolbarPath="undercoverGroup"
+               id="org.codehaus.undercover.popup.actions.RefreshAction">
+         </action>
+         <action
+               label="Find Tests"
+               class="org.codehaus.undercover.popup.actions.FindTestsAction"
+               toolbarPath="undercoverGroup"
+               id="org.codehaus.undercover.popup.actions.FindTestsAction">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            objectClass="org.eclipse.core.resources.IResource"
+            adaptable="true"
+            label="Undercover test decorator"
+            state="false"
+            class="org.codehaus.undercover.decorators.UndercoverDecorator"
+            id="org.codehaus.undercover.decorators.UndercoverDecorator">
+         <description>
+            Undercover test decorator
+         </description>
+      </decorator>
+   </extension>
+   <extension
+         id="coolproblem"
+         point="org.eclipse.core.resources.markers">
+      <attribute
+            name="coolFactor">
+      </attribute>
+      <persistent
+            value="true">
+      </persistent>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+   </extension>
+
+</plugin>
