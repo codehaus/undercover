@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<welcomePage title="Continuous Testing" format="wrap">
+
+<intro>Continuous testing builds on the automated developer support in
+Eclipse to make it even easier to keep your Java code well-tested, if
+you have a JUnit test suite.  With continuous testing enabled, as you
+edit your code, Eclipse runs your tests quietly in the background, and
+notifies you if any of them fail or cause errors.  To get started, see 
+the <topic id="/edu.mit.lcs.pag.continuoustester/toc.xml">online tutorial</topic></intro>
+</welcomePage>
